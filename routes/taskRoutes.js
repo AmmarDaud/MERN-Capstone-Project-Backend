@@ -9,8 +9,15 @@ import {
 
 const router = express.Router({ mergeParams: true });
 
-router.route("/").get(protect, getTasks).post(protect, createTask);
+// GET all tasks & CREATE new task
+router
+  .route("/")
+  .get(protect, getTasks)       
+  .post(protect, createTask);   
 
-router.route("/:taskId").put(protect, updateTask).delete(protect, deleteTask);
+router
+  .route("/:taskId")
+  .put(protect, updateTask)     
+  .delete(protect, deleteTask); 
 
 export default router;
