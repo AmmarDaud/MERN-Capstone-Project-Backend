@@ -2,14 +2,22 @@ import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema(
   {
-    name: 
-    {
+    name: {
       type: String,
       required: true,
+      trim: true,
     },
-    description: String,
-    owner: 
-    {
+    description: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    status: {
+      type: String,
+      enum: ["Active", "In Progress", "Completed", "On Hold"],
+      default: "Active",
+    },
+    owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
