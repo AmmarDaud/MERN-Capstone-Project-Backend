@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.json("Welcome to Project Management");
 });
 
-app.use("/api/", authRoutes);
+app.use("/api", authRoutes);
 app.use("/api/projects", projectRoutes);
 
 const PORT = process.env.PORT || 5000;
