@@ -41,7 +41,9 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
     }
 
     const user = await User.findOne({ email });
@@ -55,10 +57,10 @@ export const login = async (req, res) => {
     }
 
     res.json({
-      user: { 
-        id: user._id, 
-        name: user.name, 
-        email: user.email 
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
       },
       token: generateToken(user._id),
     });
